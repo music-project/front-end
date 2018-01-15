@@ -1,113 +1,87 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+    <div class="bg-light is-fullheight p-t-2">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3">
+                    <div class="is-sticky" style="top: 5rem;">
+                        <profile-card :user="me"></profile-card>
+                    </div>
+                    <!-- end profile card -->
+                </div>
+                <!--end sidebar-->
+
+                <div class="column is-6">
+                    <div class="card">
+                        <tweet-box :user="me"></tweet-box>
+                        <tweet-list :tweets="tweets"></tweet-list>
+                    </div>
+
+                    <button :disabled="noMoreTweets" @click.prevent="loadMore" :class="{'is-loading': loading}" class="button m-t-1 m-b-1 is-fullwidth">
+                        {{ noMoreTweets ? 'No more tweets...' : 'Load more...' }}
+                    </button>
+                </div>
+                <!--end main content area-->
+
+                <div class="column is-3">
+                    <div class="is-sticky" style="top: 5rem;">
+                        <follow-suggestions></follow-suggestions>
+                        <side-footer></side-footer>
+                    </div>
+                </div>
+                <!--end right sidebar-->
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
+import TweetBox from './TweetBox'
+
 export default {
-  name: 'HelloWorld',
+  components: {TweetBox},
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      loading: false,
+      nextOffset: 26,
+      perPage: 26,
+      noMoreTweets: false
+    }
+  },
+  computed: {
+    me () {
+      return this.$store.getters.me
+    },
+    tweets () {
+      return this.$store.getters.feed
+    }
+  },
+  created () {
+    this.fetchFeed()
+    console.log('Get user feed')
+  },
+  methods: {
+    fetchFeed () {
+      this.noMoreTweets = false
+      this.$store.dispatch('getDashboardFeed')
+    },
+    loadMore () {
+      let vm = this
+      vm.loading = true
+      this.$store.dispatch('getDashboardFeed', {offset: this.nextOffset}).then(function (res) {
+        vm.loading = false
+
+        if (res.data.tweets.length === vm.perPage) {
+          vm.nextOffset = vm.nextOffset + vm.perPage
+        } else {
+          vm.noMoreTweets = true
+        }
+      })
+    }
+  },
+  watch: {
+    '$route' () {
+      this.fetchFeed()
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

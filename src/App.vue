@@ -35,13 +35,13 @@
                                 <router-link class="navbar-item" :to="{ name: 'profile', params: { username: me.username }}">
                                     Profile
                                 </router-link>
-    
+
                                 <hr class="navbar-divider">
                                     <a href="http://localhost:8000/logout" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();" class="navbar-item ">
                                         Logout
-                                </a>
-    
+                                    </a>
+
                                 <form id="logout-form" action="http://localhost:8000/logout" method="POST" style="display: none;">
                                     <input type="hidden" name="_token" value="c91zxFt0PHQZyqHkOIorF2iEgBtwW5qpDc3Nbc12">
                                 </form>
@@ -60,17 +60,17 @@
 </template>
 
 <script>
-    export default {
-        computed: {
-          isLoading() {
-            return this.$store.getters.isLoading;
-          },
-          me() {
-            return this.$store.getters.me
-          }
-        },
-        created() {
-            this.$store.dispatch('loginUser');
-        }
+export default {
+  computed: {
+    isLoading () {
+      return this.$store.getters.isLoading
+    },
+    me () {
+      return this.$store.getters.me
     }
+  },
+  created () {
+    this.$store.dispatch('loginUser')
+  }
+}
 </script>

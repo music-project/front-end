@@ -1,23 +1,23 @@
 const state = {
-    me: {},
-    feed: [],
-    profilePage: {
-        profile: {
-            bio: ''
-        },
-        avatar: '',
-        username: '',
-        tweets: [],
-        is_following: false
+  me: {},
+  feed: [],
+  profilePage: {
+    profile: {
+      bio: ''
     },
-    tweetDetail: {
-        user: {},
-        replies: {}
-    },
-    openTweetDetails: null,
-    followSuggestions: [],
-    isLoading: false,
-    appName: 'Music'
+    avatar: '',
+    username: '',
+    tweets: [],
+    is_following: false
+  },
+  tweetDetail: {
+    user: {},
+    replies: {}
+  },
+  openTweetDetails: null,
+  followSuggestions: [],
+  isLoading: false,
+  appName: 'Music'
 }
 
-export default state;
+export default state
