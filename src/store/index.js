@@ -1,23 +1,29 @@
-const state = {
-  me: {},
-  feed: [],
-  profilePage: {
-    profile: {
-      bio: ''
-    },
-    avatar: '',
-    username: '',
-    tweets: [],
-    is_following: false
-  },
-  tweetDetail: {
-    user: {},
-    replies: {}
-  },
-  openTweetDetails: null,
-  followSuggestions: [],
-  isLoading: false,
-  appName: 'Music'
-}
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-export default state
+Vue.use(Vuex)
+const store = new Vuex.Store({
+  state: {
+    me: {},
+    feed: [],
+    profilePage: {
+      profile: {
+        bio: ''
+      },
+      avatar: '',
+      username: '',
+      tweets: [],
+      is_following: false
+    },
+    tweetDetail: {
+      user: {},
+      replies: {}
+    },
+    openTweetDetails: null,
+    followSuggestions: [],
+    isLoading: false,
+    appName: 'Music'
+  }
+})
+
+export default store

@@ -1,5 +1,5 @@
 <template>
-<div class="app-wrap">
+<div id="app-wrap">
     <nav class="navbar ">
         <div class="container" :class="{'is-loading': isLoading}">
             <div class="navbar-brand">
@@ -12,7 +12,7 @@
             <div id="navMenubd-example" class="navbar-menu">
                 <div class="navbar-start"></div>
                 <div class="navbar-end">
-                    <router-link class="navbar-item" :to="{ name: 'notification', params: { username: me.username }}">
+                    <router-link class="navbar-item" :to="{ name: 'notification', params: { username:'misakar' }}">
                         <a href="#" class="navbar-item">
                             <span class="icon has-text-grey-light">
                                 <i class="fa fa-bell-o"></i>
@@ -20,15 +20,15 @@
                         </a>
                     </router-link>
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a href="#" class="navbar-link  is-active"><img :src="me.avatar" alt="" class="is-circle">
+                        <a href="#" class="navbar-link  is-active"><img src="https://pic3.zhimg.com/v2-ede1b0034c587c3d4cb7d7b1d24d7985_xl.jpg" alt="" class="is-circle">
                         </a>
                         <div class="navbar-dropdown is-boxed is-right">
                             <div class="navbar-item"><strong>
-                                {{ me.name }}
+                                    "misakar"
                             </strong>
                             </div>
 
-                            <router-link class="navbar-item" :to="{ name: 'profile', params: { username: me.username }}">
+                            <router-link class="navbar-item" :to="{ name: 'profile', params: { username: 'misakar' }}">
                                 Profile
                             </router-link>
 
@@ -67,21 +67,22 @@ export default {
   components: {TweetDetail},
   computed: {
     isLoading () {
-      return this.$store.getters.isLoading
+      // return this.$store.getters.isLoading
+      return true
     },
     me () {
-      return this.$store.getters.me
+      // return this.$store.getters.me
     },
     openTweetDetail () {
-      return this.$store.getters.openTweetDetails
+      // return this.$store.getters.openTweetDetails
     }
   },
   created () {
-    this.$store.dispatch('loginUser')
+    // this.$store.dispatch('loginUser')
   },
   methods: {
     closePopup () {
-      this.$store.commit('OPEN_TWEET_DETAIL', null)
+      // this.$store.commit('OPEN_TWEET_DETAIL', null)
     }
   }
 }
