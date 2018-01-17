@@ -35,11 +35,13 @@
 </template>
 
 <script>
+import ProfileCard from '../components/ProfileCard'
 import TweetBox from '../components/TweetBox'
 import TweetList from '../components/TweetList'
 
 export default {
   components: {
+      ProfileCard,
       TweetBox,
       TweetList
   },

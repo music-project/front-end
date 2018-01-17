@@ -1,18 +1,26 @@
 const state = {
-    me: {},
+    me: {
+      avatar: 'https://pbs.twimg.com/profile_images/947471782776225793/yO6Kkg39_400x400.jpg',
+      username: 'misakar',
+      tweets: [],
+      is_following: false,
+      cover: 'https://user-images.githubusercontent.com/10671733/35020309-5ee15ae2-fb66-11e7-8f3a-8dcb44110a18.jpg',
+      bio: 'I am misakar'
+    },
     feed: ["hahaha1", "hahaha2"],
     profilePage: {
-        profile: {
-            bio: 'I am misakar'
-        },
-        avatar: 'https://pic3.zhimg.com/v2-ede1b0034c587c3d4cb7d7b1d24d7985_xl.jpg',
-        username: 'misakar',
-        tweets: [],
-        is_following: false
+       profile: {
+           bio: 'I am misakar'
+       },
+       avatar: 'https://pbs.twimg.com/profile_images/947471782776225793/yO6Kkg39_400x400.jpg',
+       username: 'misakar',
+       tweets: [],
+       is_following: false,
+       cover: 'https://user-images.githubusercontent.com/10671733/35020309-5ee15ae2-fb66-11e7-8f3a-8dcb44110a18.jpg'
     },
     tweetDetail: {
-        user: {},
-        replies: []
+       user: {},
+       replies: []
     },
     openTweetDetails: null,
     followSuggestions: [],

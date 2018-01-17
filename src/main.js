@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 require('./bootstrap')
+require('./assets/scss/main.scss');
 
 Vue.config.devtools = true
 Vue.config.productionTip = false

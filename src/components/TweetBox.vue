@@ -3,7 +3,7 @@
         <div class="media">
             <div class="media-left">
                 <figure class="image is-32x32 is-circle">
-                    <img :src="user.avatar" alt="">
+                    <img :src="user.avatar" alt="Image">
                 </figure>
             </div>
             <div class="media-content">
@@ -46,8 +46,8 @@ export default {
     user: Object,
     maxLength: {default: 200, type: Number},
     isReply: false,
-    btnText: {default: 'Tweet'},
-    placeholder: {default: 'Whats happening?'}
+    btnText: {default: '上传音乐'},
+    placeholder: {default: '分享今天最爱的音乐吧!'}
   },
   computed: {
     tweetId () {
