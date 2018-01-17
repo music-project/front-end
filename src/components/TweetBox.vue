@@ -10,8 +10,17 @@
                 <form action="">
                     <div class="field">
                         <div class="control">
-                            <textarea :maxlength="maxLength" rows="3" v-model="body" class="textarea" :placeholder="placeholder"></textarea>
+                            <!--textarea :maxlength="maxLength" rows="3" v-model="body" class="textarea" :placeholder="placeholder"></textarea-->
+                            <div class="field is-grouped">
+                            <p class="control is-expanded">
+                             <input v-model="search" class="input" type="text" :placeholder=placeholder>
+                            </p>
+                            <p class="control">
+                              <button class="button is-outlined is-primary" @click.prevent="searchMusic" :class="{'is-loading': loading}">Search</button>
+                            </p>
+                            </div>
                         </div>
+                        {{ search }}
                         <p v-if="errorMsg" class="help-block help is-danger">{{ errorMsg }}</p>
                     </div>
 
@@ -23,14 +32,14 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="level-right">
+                        <!--div class="level-right">
                             <div class="level-item has-text-grey">{{ maxLength - body.length }}</div>
                             <div class="level-item">
                                 <button @click.prevent="submit" class="button is-outlined is-primary" :class="{'is-loading': loading }">
                                     {{ btnText }}
                                 </button>
                             </div>
-                        </div>
+                        </div-->
                     </div>
                 </form>
             </div>
@@ -58,7 +67,8 @@ export default {
     return {
       body: '',
       errorMsg: '',
-      loading: false
+      loading: false,
+      search: ''
     }
   },
   created () {
@@ -71,6 +81,15 @@ export default {
       } else {
         this.body = this.errorMsg = ''
       }
+    },
+    searchMusic () {
+      this.loading = true
+      /* setTimeout(function(){ this.loading = false }, 3000); */
+      var music = this.search.split(';')[0]
+      var artist = this.search.split(';')[1]
+      this.$store.dispatch('searchMusic', {music: music, artist: artist}).then((res) => {
+        this.loading = false
+      })
     },
     submit () {
       this.loading = true

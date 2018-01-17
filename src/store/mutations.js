@@ -2,6 +2,12 @@
 export const Regist_User = state => {
     state.isLogin = true
 }
+
+// search music
+// export const Search_Music = (state, data) => {
+//     
+// }
+
 // Add me user
 export const ADD_ME = (state, user) => {
     state.me = user
