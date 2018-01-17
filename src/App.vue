@@ -12,20 +12,16 @@
             </div>
             <div id="navMenubd-example" class="navbar-menu">
                 <div class="navbar-start"></div>
-                <div class="navbar-end">
-                    <!--router-link class="navbar-item" :to="{name: 'notification', params: { username: me.username }}">
-                    <figure class="image is-64x64 is-circle">
-                        <a href="#" class="navbar-item">
-                           <img :src="me.avatar" alt="">
-                        </a>
-                    </figure>
-                    </router-link-->
+                <div class="navbar-end" v-if="isLogin == true">
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a href="#" class="navbar-link  is-active"><img :src="me.avatar" alt="" class="is-circle">
                         </a>
                         <div class="navbar-dropdown is-boxed is-right">
                             <div class="navbar-item">{{ me.username }}</div>
 
+                            <router-link class="navbar-item" to="/">
+                                <strong>Home</strong>
+                            </router-link>
                             <router-link class="navbar-item" :to="{ name: 'profile', params: { username: me.username }}">
                                 <strong>Profile</strong>
                             </router-link>
@@ -72,10 +68,13 @@ export default {
     },
     openTweetDetail () {
       return this.$store.getters.openTweetDetails
+    },
+    isLogin () {
+      return this.$store.getters.isLogin 
     }
   },
   created () {
-    this.$store.dispatch('loginUser')
+    // this.$store.dispatch('loginUser')
   },
   methods: {
     closePopup () {

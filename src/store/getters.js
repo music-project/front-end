@@ -19,5 +19,7 @@ export const openTweetDetails = state => state.openTweetDetails
 // Get toggle status of loading
 export const isLoading = state => state.isLoading
 
+export const isLogin = state => state.isLogin
+
 // Get the app name
 export const appName = state => state.appName

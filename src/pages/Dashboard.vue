@@ -39,13 +39,15 @@ import ProfileCard from '../components/ProfileCard'
 import TweetBox from '../components/TweetBox'
 import TweetList from '../components/TweetList'
 import FollowSuggestions from '../components/FollowSuggestions'
+import SideFooter from '../components/SideFooter'
 
 export default {
   components: {
       ProfileCard,
       TweetBox,
       TweetList,
-      FollowSuggestions
+      FollowSuggestions,
+      SideFooter
   },
   data () {
     return {

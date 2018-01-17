@@ -1,3 +1,7 @@
+// register user
+export const Regist_User = state => {
+    state.isLogin = true
+}
 // Add me user
 export const ADD_ME = (state, user) => {
     state.me = user

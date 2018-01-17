@@ -2,22 +2,23 @@
 import axios from 'axios'
 
 // Laravel CSRF token
-let token = document.head.querySelector('meta[name="csrf-token"]');
+// let token = document.head.querySelector('meta[name="csrf-token"]');
 
 // Create an Instance
-const instance = axios.create({
+const http = axios.create({
     // change this url to your api
-    baseURL: '//localhost:8000/',
-
+    baseURL: 'http://127.0.0.1:8000/api'
+    
     // any other headers you want to include
-    headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-TOKEN': token ? token.content : null
-    }
+    // headers: {
+    //     'X-Requested-With': 'XMLHttpRequest',
+    //     'X-CSRF-TOKEN': token ? token.content : null
+    // }
 });
 
 // Error interceptor can be used for global error handling
-instance.interceptors.response.use(function (response) {
+/*
+http.interceptors.response.use(function (response) {
     // Do something with response data
     return response;
 }, function (error) {
@@ -39,5 +40,6 @@ instance.interceptors.response.use(function (response) {
         console.log('Error', error.message);
     }
 });
+*/
 
-export default instance
+export default http

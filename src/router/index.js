@@ -5,6 +5,8 @@ import Dashboard from '../pages/Dashboard'
 import Profile from '../pages/Profile'
 import Followers from '../pages/Followers'
 import Following from '../pages/Following'
+import Login from '../pages/Login'
+import Register from '../pages/Register'
 
 Vue.use(Router)
 
@@ -36,6 +38,18 @@ export default new Router({
       path: '/@:username/following',
       name: 'following',
       component: Following,
+      props: true
+    },
+    {
+      path: '/Login',
+      name: 'login',
+      component: Login,
+      props: true
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register,
       props: true
     }
   ],

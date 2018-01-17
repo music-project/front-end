@@ -1,10 +1,10 @@
 <template>
     <div class="card m-t-2">
         <div class="card-content">
-            <p>A demo SPA on <strong>Vue.js</strong> running <strong>GraphQL</strong> as backend implemented on <strong>Laravel</strong></p>
+            <p>Music: 每日分享你最爱的音乐! </p>
 
             <p class="has-text-grey-light m-t-1">
-                <small>&copy; {{ appName }} 2017, by <a href="http://www.qcode.in" target="_blank">QCode.in</a></small>
+                <small>&copy; {{ appName }}, by <a href="www.misakar.me" target="_blank"><small>廖志鑫, 邓苡, 周若玮, 张思雨, 朱承浩</small></a></small>
             </p>
         </div>
     </div>
