@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 /* Page Components */
-import Dashboard from '@/components/Dashboard'
-import Profile from '@/components/Profile'
-import Followers from '@/components/Followers'
-import Following from '@/components/Following'
+import Dashboard from '../pages/Dashboard'
+import Profile from '../pages/Profile'
+import Followers from '../pages/Followers'
+import Following from '../pages/Following'
 
 Vue.use(Router)
 

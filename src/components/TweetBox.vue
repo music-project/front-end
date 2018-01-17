@@ -3,7 +3,7 @@
         <div class="media">
             <div class="media-left">
                 <figure class="image is-32x32 is-circle">
-                    <img :src="user.avatar" alt="Image">
+                    <img :src="user.avatar" alt="">
                 </figure>
             </div>
             <div class="media-content">

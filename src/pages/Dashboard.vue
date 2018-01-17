@@ -35,10 +35,14 @@
 </template>
 
 <script>
-import TweetBox from './TweetBox'
+import TweetBox from '../components/TweetBox'
+import TweetList from '../components/TweetList'
 
 export default {
-  components: {TweetBox},
+  components: {
+      TweetBox,
+      TweetList
+  },
   data () {
     return {
       loading: false,
