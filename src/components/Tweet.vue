@@ -39,7 +39,9 @@
 </template>
 
 <script>
+import TweetDetail from "./TweetDetail"
 export default {
+  components: {TweetDetail},
   name: 'Tweet',
   props: ['tweet'],
   data () {
@@ -53,6 +55,9 @@ export default {
     }
   },
   methods: {
+    tweetDetail() {
+      this.$store.commit('OPEN_TWEET_DETAIL', this.tweet.id)
+    },
     remove (tweetId) {
       if( window.confirm('Are you sure want to delete this tweet?') ) {
           this.$store.commit('DELETE_TWEET', tweetId)

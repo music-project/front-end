@@ -109,13 +109,13 @@
 </template>
 
 <script>
-import FollowButton from './FollowButton'
-import TweetBox from './TweetBox'
+// import FollowButton from './FollowButton'
+// import TweetBox from './TweetBox'
 export default {
-  components: {
-    TweetBox,
-    FollowButton
-  },
+//   components: {
+//     TweetBox,
+//     FollowButton
+//   },
   name: 'TweetDetail',
   props: ['tweetId'],
   data () {

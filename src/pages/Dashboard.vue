@@ -38,12 +38,14 @@
 import ProfileCard from '../components/ProfileCard'
 import TweetBox from '../components/TweetBox'
 import TweetList from '../components/TweetList'
+import FollowSuggestions from '../components/FollowSuggestions'
 
 export default {
   components: {
       ProfileCard,
       TweetBox,
-      TweetList
+      TweetList,
+      FollowSuggestions
   },
   data () {
     return {

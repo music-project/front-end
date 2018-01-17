@@ -166,6 +166,7 @@ export const unFollowUser = ({commit}, userId) => {
 
 // Get follow user suggestions
 export const getFollowUserSuggestions = ({commit}, limit) => {
+    /*
     let limitQuery = `(first:${limit})`;
 
     let query = `{
@@ -181,6 +182,13 @@ export const getFollowUserSuggestions = ({commit}, limit) => {
     return http.get( '/graphql?query=' + str.stripLines(query) ).then(function (res) {
         commit('ADD_FOLLOW_SUGGESTIONS', res.data.data.followSuggestions)
     });
+    */
+    return {
+      id: 1,
+      name: 'misakar',
+      username: 'misakar',
+      avatar: 'https://pbs.twimg.com/profile_images/947471782776225793/yO6Kkg39_400x400.jpg'
+    }
 }
 
 // Get followers for a user by username

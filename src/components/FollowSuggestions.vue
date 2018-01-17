@@ -66,7 +66,8 @@
         },
         methods: {
             fetchSuggestions() {
-                this.loading = true
+                // this.loading = true
+                this.loading = false
                 this.$store.dispatch('getFollowUserSuggestions', this.limit).then((res) => {
                     this.loading = false;
                 });
