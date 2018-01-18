@@ -15,10 +15,6 @@
                         <tweet-box :user="me"></tweet-box>
                         <tweet-list :tweets="tweets"></tweet-list>
                     </div>
-
-                    <!--button :disabled="noMoreTweets" @click.prevent="loadMore" :class="{'is-loading': loading}" class="button m-t-1 m-b-1 is-fullwidth">
-                        {{ noMoreTweets ? 'No more tweets...' : 'Load more...' }}
-                    </button-->
                 </div>
                 <!--end main content area-->
 
@@ -71,9 +67,12 @@ export default {
   },
   methods: {
     fetchFeed () {
+      // alert('dashboard vue')
       this.noMoreTweets = false
-      this.$store.dispatch('getDashboardFeed')
+      // alert(this.$store.getters.me.id)
+      this.$store.dispatch('getDashboardFeed', this.$store.getters.me)
     },
+    /*
     loadMore () {
       let vm = this
       vm.loading = true
@@ -87,6 +86,7 @@ export default {
         }
       })
     }
+    */
   },
   watch: {
     '$route' () {

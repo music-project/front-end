@@ -36,15 +36,34 @@ export const loginUser = ({ commit }, data) => {
     .then((res) => {
         if (res.data.state == 200) {
             var user = res.data.user
-            alert(user.id)
             commit('Login_User', user)
             window.router.push('/')
         } // error
     })
 }
 
+export const loginCurrentUser = ({ commit }, data) => {
+    var token = data.token
+    var headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + token
+    }
+    if (!token) {
+        window.router.push('login')
+    } else {
+        var uid = atob(token).split(':')[1]
+        http.get('/user/'+uid+'/', {headers:headers}, {withCredentials: true})
+        .then((res) => {
+            if (res.data.state == 200) {
+                var user = res.data.user
+                commit('Login_User', user)
+                window.router.push('/')
+            }
+        })
+    }
+}
+
 export const upMusic = ({ commit }, data) => {
-    // alert(data.music+ ' ' + data.artist)
     var headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Basic ' + localStorage.getItem('music_token')
@@ -54,6 +73,7 @@ export const upMusic = ({ commit }, data) => {
     var me = data.me
     var api_url = '/' + me.id + '/music/?music=' + music + '&' + 'artist=' + artist
     http.post(api_url, data, {headers: headers}, {withCredentials: true})
+    /*
     .then((res) => {
         if (res.data.state == 200) {
             // var body = '<div id="music_' + res.data.id + '" class="aplayer"></div>'
@@ -71,6 +91,38 @@ export const upMusic = ({ commit }, data) => {
                 artist: artist
             }
             commit('Insert_Feed', music_data)
+        }
+    })
+    */
+    return getDashboardFeed({ commit }, me)
+}
+
+export const getFollowUserSuggestions = ({ commit }, me) => {
+    var headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + localStorage.getItem('music_token')
+    }
+    var api_url = '/' + me.id + '/suggest_users/'
+    http.get(api_url, {headers:headers}, {withCredentials: true})
+    .then((res) => {
+        if (res.data.state == 200) {
+            commit('Suggest_User', res.data.users)
+        }
+    })
+}
+
+export const getDashboardFeed = ({ commit }, me) => {
+    var headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + localStorage.getItem('music_token')
+    }
+    // alert(me.id)
+    var api_url = '/' + me.id + '/music/'
+    http.get(api_url, {headers: headers}, {withCredentials: true})
+    .then((res) => {
+        if (res.data.state == 200) {
+            commit('Update_Feed', res.data.musics)
+            commit('Update_Tweets_Cnt', res.data.tweets_cnt)
         }
     })
 }

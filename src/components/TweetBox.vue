@@ -5,7 +5,7 @@
                 <form action="">
                     <div class="field">
                         <div class="control">
-                            <div class='title is-5 is-info'>
+                            <div class='title is-5 is-info' style="text-align:center;">
                                 分享今日最爱的音乐吧
                             </div>
                             <div class="field is-grouped">
@@ -18,9 +18,11 @@
                             </p>
                             </div>
                         </div>
-                        <div v-if="search">
-                        歌曲名: {{ search.split(';')[0] }}&nbsp
-                        歌手名: {{ search.split(';')[1] }}
+                        <div class="tags" v-if="search">
+                            <p>
+                            歌曲名: {{ search.split(';')[0] }} &nbsp
+                            歌手名: {{ search.split(';')[1] }}
+                            </p>
                         </div>
                         <p v-if="errorMsg" class="help-block help is-danger">{{ errorMsg }}</p>
                     </div>
@@ -33,14 +35,6 @@
                                 </span>
                             </a>
                         </div>
-                        <!--div class="level-right">
-                            <div class="level-item has-text-grey">{{ maxLength - body.length }}</div>
-                            <div class="level-item">
-                                <button @click.prevent="submit" class="button is-outlined is-primary" :class="{'is-loading': loading }">
-                                    {{ btnText }}
-                                </button>
-                            </div>
-                        </div-->
                     </div>
                 </form>
             </div>

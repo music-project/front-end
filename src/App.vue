@@ -5,6 +5,7 @@
             <div class="navbar-brand">
                 <a href="/" class="navbar-item">
                     <img src="./assets/logo.png" alt="Music" height="38">
+                    Music
                 </a>
                 <div data-target="navMenubd-example" class="navbar-burger burger">
                     <span></span> <span></span> <span></span>
@@ -77,7 +78,8 @@ export default {
     }
   },
   created () {
-    // this.$store.dispatch('loginUser')
+      // alert('app vue')
+      this.$store.dispatch('loginCurrentUser', {token: localStorage.getItem("music_token")})
   },
   methods: {
     closePopup () {

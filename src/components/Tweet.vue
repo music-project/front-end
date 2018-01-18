@@ -15,11 +15,11 @@
                         <strong>{{ tweetData.user.name }}</strong>
                     </router-link>
                     <strong>@{{ tweetData.user.username }}</strong>
-                    <small class="has-text-grey-light">{{ tweetData.timestamp }}</small>
+                    <small class="has-text-grey-light">{{ tweetData.timestamp.split('.')[0] }}</small>
                 </p>
                 <br>
                 <div class="tweet-body has-text-grey"> <!--@click="tweetDetail"--> 
-                    <aplayer :theme="black" :music="{
+                    <aplayer :music="{
                         title: tweetData.music,
                         author: tweetData.artist,
                         url: tweetData.url,
@@ -69,7 +69,7 @@ export default {
       this.$store.commit('OPEN_TWEET_DETAIL', this.tweet.id)
     },
     remove (tweetId) {
-      if( window.confirm('Are you sure want to delete this tweet?') ) {
+      if( window.confirm('对这首歌不感兴趣吗?') ) {
           this.$store.commit('DELETE_TWEET', tweetId)
       }
     }

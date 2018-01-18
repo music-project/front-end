@@ -31,9 +31,10 @@
                     <div>
                         <router-link :to="{ name: 'profile', params: { username: user.username }}">
                             <p class="is-6 has-text-grey-light">
-                                <small>Tweets</small>
+                                <small>Musics</small>
                             </p>
                             <p class="is-4">{{ user.tweets_count || 0 }}</p>
+                            <!--p class="is-4">{{ user.tweets.length || 0 }}</p-->
                         </router-link>
                     </div>
                 </div>
@@ -44,7 +45,7 @@
                             <p class="is-6 has-text-grey-light">
                                 <small>Following</small>
                             </p>
-                            <p class="is-4">{{ user.following_count || 0 }}</p>
+                            <p class="is-4">{{ user.following.length || 0 }}</p>
                         </router-link>
                     </div>
                 </div>
@@ -55,7 +56,7 @@
                             <p class="is-6 has-text-grey-light">
                                 <small>Followers</small>
                             </p>
-                            <p class="is-4">{{ user.followers_count || 0 }}</p>
+                            <p class="is-4">{{ user.followers.length || 0 }}</p>
                         </router-link>
                     </div>
                 </div>

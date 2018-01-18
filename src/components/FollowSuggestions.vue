@@ -3,12 +3,12 @@
 
         <header class="card-header">
             <p class="card-header-title">
-                Who to follow
+                推荐关注
                     &nbsp; -
                     <a :disabled="loading"
                        style="font-weight: normal"
                        class="button is-small is-link"
-                       @click.prevent="refresh"> refresh</a>
+                       @click.prevent="refresh">刷新</a>
             </p>
         </header>
 
@@ -49,7 +49,7 @@
         props: {
             limit: {
                 default: 3, type: Number
-            }
+            },
         },
         data() {
             return {
@@ -58,7 +58,7 @@
         },
         computed: {
           suggestions() {
-              return this.$store.getters.followerSuggestions;
+              return this.$store.getters.followerSuggestions
           }
         },
         created() {
@@ -68,7 +68,7 @@
             fetchSuggestions() {
                 // this.loading = true
                 this.loading = false
-                this.$store.dispatch('getFollowUserSuggestions', this.limit).then((res) => {
+                this.$store.dispatch('getFollowUserSuggestions', this.$store.getters.me).then((res) => {
                     this.loading = false;
                 });
             },

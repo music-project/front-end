@@ -1,4 +1,6 @@
 // register user
+// import containV from '../utils'
+//
 export const Regist_User = state => {
 
 }
@@ -10,11 +12,22 @@ export const Login_User = (state, user) => {
 
 export const Logout_User = state => {
     localStorage.removeItem("music_token")
+    localStorage.removeItem("me")
     state.isLogin = localStorage.getItem("music_token")
 }
 
-export const Insert_Feed = (state, music) => {
-    state.feed.unshift(music)
+export const Update_Feed = (state, musics) => {
+    state.feed = musics
+}
+
+export const Update_Tweets_Cnt = (state, cnt) => {
+    state.me.tweets_count = cnt
+}
+
+
+
+export const Suggest_User = (state, users) => {
+    state.followSuggestions = users
 }
 
 /* ---------------------------------------------------- */

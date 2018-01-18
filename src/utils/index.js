@@ -1,9 +1,9 @@
 import http from './http'
 import str from './str'
-// import ap from './player'
+import containV from './containV'
 
 export {
     http,
     str,
-//    ap
+    containV
 }
