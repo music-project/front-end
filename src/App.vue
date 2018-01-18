@@ -12,7 +12,7 @@
             </div>
             <div id="navMenubd-example" class="navbar-menu">
                 <div class="navbar-start"></div>
-                <div class="navbar-end" v-if="isLogin == true">
+                <div class="navbar-end" v-if="isLogin">
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a href="#" class="navbar-link  is-active"><img :src="me.avatar" alt="" class="is-circle">
                         </a>
@@ -26,8 +26,8 @@
                                 <strong>Profile</strong>
                             </router-link>
 
-                            <hr class="navbar-divider"> <a href="http://localhost:8000/logout" onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();" class="navbar-item ">
+                            <hr class="navbar-divider"> 
+                            <a href="" v-on:click="Logout" class="navbar-item">
                                 <strong>Logout</strong>
                             </a>
                             <form id="logout-form" action="http://localhost:8000/logout" method="POST" style="display: none;">
@@ -35,6 +35,9 @@
                             </form>
                         </div>
                     </div>
+                <!--div class="navbar-end" v-else>
+                    登录
+                </div-->
                 </div>
             </div>
         </div>
@@ -79,6 +82,10 @@ export default {
   methods: {
     closePopup () {
       this.$store.commit('OPEN_TWEET_DETAIL', null)
+    },
+    Logout () {
+      this.$store.commit('Logout_User')
+      this.$router.push('login')
     }
   }
 }

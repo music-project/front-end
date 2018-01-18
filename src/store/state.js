@@ -98,7 +98,7 @@ const state = {
         },
     ],
     isLoading: false,
-    isLogin: false,
+    isLogin: !!!!localStorage.getItem("music_token"),
     token: '',
     appName: 'Music'
 }

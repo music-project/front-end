@@ -1,8 +1,16 @@
 // register user
 export const Regist_User = state => {
-    state.isLogin = true
+
 }
 
+export const Login_User = state => {
+    state.isLogin = localStorage.getItem("music_token")
+}
+
+export const Logout_User = state => {
+    localStorage.removeItem("music_token")
+    state.isLogin = localStorage.getItem("music_token")
+}
 // search music
 // export const Search_Music = (state, data) => {
 //     
