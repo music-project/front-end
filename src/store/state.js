@@ -1,5 +1,6 @@
 const state = {
     me: {
+      id: 0,
       avatar: '',
       username: '',
       tweets: [],
@@ -7,6 +8,7 @@ const state = {
       cover: '',
       bio: ''
     },
+    /*
     feed: [
         {
           id: 1,
@@ -56,6 +58,8 @@ const state = {
         }
 
     ],
+    */
+    feed: [],
     profilePage: {
        profile: {
            bio: 'I am misakar'
@@ -99,7 +103,7 @@ const state = {
     ],
     isLoading: false,
     isLogin: !!!!localStorage.getItem("music_token"),
-    token: '',
+    token: localStorage.getItem("music_token"),
     appName: 'Music'
 }
 

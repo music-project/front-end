@@ -14,10 +14,18 @@
                     <router-link class="has-text-dark" :to="{ name: 'profile', params: { username: tweetData.user.username }}">
                         <strong>{{ tweetData.user.name }}</strong>
                     </router-link>
-                    <small>@{{ tweetData.user.username }}</small>
-                    <small class="has-text-grey-light">{{ tweetData.created_at }}</small>
+                    <strong>@{{ tweetData.user.username }}</strong>
+                    <small class="has-text-grey-light">{{ tweetData.timestamp }}</small>
                 </p>
-                <div class="tweet-body has-text-grey" @click="tweetDetail" v-html="tweetData.body"></div>
+                <br>
+                <div class="tweet-body has-text-grey"> <!--@click="tweetDetail"--> 
+                    <aplayer :theme="black" :music="{
+                        title: tweetData.music,
+                        author: tweetData.artist,
+                        url: tweetData.url,
+                        pic: tweetData.pic
+                    }"></aplayer>
+                </div>
             </div>
 
             <nav class="level is-mobile">
@@ -40,8 +48,10 @@
 
 <script>
 import TweetDetail from "./TweetDetail"
+import Aplayer from 'vue-aplayer'
+
 export default {
-  components: {TweetDetail},
+  components: {TweetDetail, Aplayer},
   name: 'Tweet',
   props: ['tweet'],
   data () {

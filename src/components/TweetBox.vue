@@ -13,11 +13,15 @@
                               <input v-model="search" class="input" type="text" :placeholder=placeholder>
                             </p>
                             <p class="control">
-                              <button class="button is-outlined is-primary" @click.prevent="searchMusic" :class="{'is-loading': loading}">Search</button>
+                              <button class="button is-outlined is-primary"
+                                  @click.prevent="upMusic" :class="{'is-loading': loading}">分享</button>
                             </p>
                             </div>
                         </div>
-                        {{ search }}
+                        <div v-if="search">
+                        歌曲名: {{ search.split(';')[0] }}&nbsp
+                        歌手名: {{ search.split(';')[1] }}
+                        </div>
                         <p v-if="errorMsg" class="help-block help is-danger">{{ errorMsg }}</p>
                     </div>
 
@@ -79,13 +83,14 @@ export default {
         this.body = this.errorMsg = ''
       }
     },
-    searchMusic () {
+    upMusic () {
       this.loading = true
-      /* setTimeout(function(){ this.loading = false }, 3000); */
       var music = this.search.split(';')[0]
       var artist = this.search.split(';')[1]
-      this.$store.dispatch('searchMusic', {music: music, artist: artist}).then((res) => {
-        this.loading = false
+      var me = this.$store.getters.me
+      this.$store.dispatch('upMusic', {music: music, artist: artist, me: me})
+      .then((res) => {
+          this.loading = false
       })
     },
     submit () {

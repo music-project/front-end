@@ -12,10 +12,12 @@ export const Logout_User = state => {
     localStorage.removeItem("music_token")
     state.isLogin = localStorage.getItem("music_token")
 }
-// search music
-// export const Search_Music = (state, data) => {
-//     
-// }
+
+export const Insert_Feed = (state, music) => {
+    state.feed.unshift(music)
+}
+
+/* ---------------------------------------------------- */
 
 // Add me user
 export const ADD_ME = (state, user) => {

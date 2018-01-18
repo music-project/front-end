@@ -2,7 +2,7 @@
     <div class="bg-light is-fullheight p-t-2">
         <div class="container">
             <div class="columns">
-                <div class="column is-3">
+                <div class="column is-3" style="position:fix">
                     <div class="is-sticky" style="top: 5rem;">
                         <profile-card :user="me"></profile-card>
                     </div>
@@ -16,9 +16,9 @@
                         <tweet-list :tweets="tweets"></tweet-list>
                     </div>
 
-                    <button :disabled="noMoreTweets" @click.prevent="loadMore" :class="{'is-loading': loading}" class="button m-t-1 m-b-1 is-fullwidth">
+                    <!--button :disabled="noMoreTweets" @click.prevent="loadMore" :class="{'is-loading': loading}" class="button m-t-1 m-b-1 is-fullwidth">
                         {{ noMoreTweets ? 'No more tweets...' : 'Load more...' }}
-                    </button>
+                    </button-->
                 </div>
                 <!--end main content area-->
 
