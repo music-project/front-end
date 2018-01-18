@@ -1,19 +1,16 @@
 <template>
     <div class="card-content bg-light">
         <div class="media">
-            <div class="media-left">
-                <!--figure class="image is-32x32 is-circle">
-                    <img :src="user.avatar" alt="Image">
-                </figure-->
-            </div>
             <div class="media-content">
                 <form action="">
                     <div class="field">
                         <div class="control">
-                            <!--textarea :maxlength="maxLength" rows="3" v-model="body" class="textarea" :placeholder="placeholder"></textarea-->
+                            <div class='title is-5 is-info'>
+                                分享今日最爱的音乐吧
+                            </div>
                             <div class="field is-grouped">
                             <p class="control is-expanded">
-                             <input v-model="search" class="input" type="text" :placeholder=placeholder>
+                              <input v-model="search" class="input" type="text" :placeholder=placeholder>
                             </p>
                             <p class="control">
                               <button class="button is-outlined is-primary" @click.prevent="searchMusic" :class="{'is-loading': loading}">Search</button>
@@ -56,7 +53,7 @@ export default {
     maxLength: {default: 200, type: Number},
     isReply: false,
     btnText: {default: '上传音乐'},
-    placeholder: {default: '分享今天最爱的音乐吧!'}
+    placeholder: {default: '搜索格式:歌曲名;歌手名'}
   },
   computed: {
     tweetId () {

@@ -1,5 +1,4 @@
 import { http, str } from '../utils'
-import router from '../router'
 
 export const registUser = ({ commit }, data) => {
     var headers = {
@@ -12,7 +11,7 @@ export const registUser = ({ commit }, data) => {
     http.post('/user/', data, headers).then((res) => {
         if (res.data.state == 200) {
             commit('Regist_User')
-            window.location.href = '/login/'
+            window.router.push('login')
         }
         else if (res.data.state == 502) {
             alert("用户已经注册")
@@ -25,21 +24,27 @@ export const loginUser = ({ commit }, data) => {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Basic ' + btoa(data.username + ':' + data.password)
     }
-    http.post('/token/', data, {headers:headers}, {withCredentials: true}).then((res) => {
+    http.post('/token/', data, {headers:headers}, {withCredentials: true})
+    .then((res) => {
         if (res.data.state == 200) {
-            // user token login
             var token = res.data.token
-            alert('token: ' + token)
             localStorage.setItem('music_token', token)
-            // login state mutation
-            commit('Login_User')
-            // redirect to home
-            window.location.href = '/'
-        }
-        // else: error handle
+            var uid = atob(token).split(':')[1]
+            return http.get('/user/'+uid+'/', {headers:headers}, {withCredentials: true})
+        } // error
+    })
+    .then((res) => {
+        if (res.data.state == 200) {
+            var user = res.data.user
+            commit('Login_User', user)
+            window.router.push('/')
+        } // error
     })
 }
 
 export const searchMusic = ({ commit }, data) => {
-    alert(data.music+ ' ' + data.artist)
+    // alert(data.music+ ' ' + data.artist)
+    var music = data.music
+    var artist = data.artist
+    // http.post('/music/search/?' + 'music=' + music + '&' + 'artist=' + artist).then(res)
 }

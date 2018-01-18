@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+window.router = router
 import store from './store'
 require('./bootstrap')
 require('./assets/scss/main.scss');

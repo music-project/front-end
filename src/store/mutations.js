@@ -3,8 +3,9 @@ export const Regist_User = state => {
 
 }
 
-export const Login_User = state => {
+export const Login_User = (state, user) => {
     state.isLogin = localStorage.getItem("music_token")
+    state.me = user
 }
 
 export const Logout_User = state => {

@@ -1,11 +1,11 @@
 const state = {
     me: {
-      avatar: 'https://pbs.twimg.com/profile_images/947471782776225793/yO6Kkg39_400x400.jpg',
-      username: 'misakar',
-      tweets: ['this is my first tweets'],
+      avatar: '',
+      username: '',
+      tweets: [],
       is_following: false,
-      cover: 'https://user-images.githubusercontent.com/10671733/35020309-5ee15ae2-fb66-11e7-8f3a-8dcb44110a18.jpg',
-      bio: 'I am misakar'
+      cover: '',
+      bio: ''
     },
     feed: [
         {
