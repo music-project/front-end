@@ -5,12 +5,13 @@
                 <form action="">
                     <div class="field">
                         <div class="control">
-                            <div class='title is-5 is-info' style="text-align:center;">
+                            <div class='title is-5 is-info'
+                                style="text-align:center;color:grey">
                                 分享今日最爱的音乐吧
                             </div>
                             <div class="field is-grouped">
                             <p class="control is-expanded">
-                              <input v-model="search" class="input" type="text" :placeholder=placeholder>
+                              <input id="search" v-model="search" class="input" type="text" :placeholder=placeholder>
                             </p>
                             <p class="control">
                               <button class="button is-outlined is-primary"
@@ -19,10 +20,10 @@
                             </div>
                         </div>
                         <div class="tags" v-if="search">
-                            <p>
+                            <!--p>
                             歌曲名: {{ search.split(';')[0] }} &nbsp
                             歌手名: {{ search.split(';')[1] }}
-                            </p>
+                            </p-->
                         </div>
                         <p v-if="errorMsg" class="help-block help is-danger">{{ errorMsg }}</p>
                     </div>

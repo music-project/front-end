@@ -57,7 +57,9 @@ export const loginCurrentUser = ({ commit }, data) => {
             if (res.data.state == 200) {
                 var user = res.data.user
                 commit('Login_User', user)
-                window.router.push('/')
+                if (data.from == 'profile') {
+                    window.router.push('/@' + user.username)
+                }
             }
         })
     }
@@ -94,6 +96,7 @@ export const upMusic = ({ commit }, data) => {
         }
     })
     */
+    getFollowUserSuggestions({commit}, me)
     return getDashboardFeed({ commit }, me)
 }
 
@@ -116,7 +119,6 @@ export const getDashboardFeed = ({ commit }, me) => {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Basic ' + localStorage.getItem('music_token')
     }
-    // alert(me.id)
     var api_url = '/' + me.id + '/music/'
     http.get(api_url, {headers: headers}, {withCredentials: true})
     .then((res) => {
@@ -125,4 +127,26 @@ export const getDashboardFeed = ({ commit }, me) => {
             commit('Update_Tweets_Cnt', res.data.tweets_cnt)
         }
     })
+}
+
+export const followUser = ({ commit }, data) => {
+    var headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + localStorage.getItem('music_token')
+    }
+    // alert(data.uname + " " + data.cname)
+    var data = {
+        cname: data.cname,
+        uname: data.uname
+    }
+    http.post('/follow/', data, {headers:headers}, {withCredentials: true})
+    .then((res) => {
+        if (res.data.state == 200) {
+            /* update state */
+        }
+    })
+}
+
+export const getTweetsByUsername = ({ commit }, data) => { 
+    
 }

@@ -57,15 +57,21 @@
 </template>
 
 <script>
-    import FollowButton from "../components/FollowButton";
-    import ProfileNav from "../components/ProfileNav";
-    import ProfileInfo from "../components/ProfileInfo";
+    import FollowButton from "../components/FollowButton"
+    import ProfileNav from "../components/ProfileNav"
+    import ProfileInfo from "../components/ProfileInfo"
+    import TweetList from "../components/TweetList"
+    import FollowSuggestions from "../components/FollowSuggestions"
+    import SideFooter from "../components/SideFooter"
 
     export default {
         components: {
             ProfileInfo,
             ProfileNav,
-            FollowButton
+            FollowButton,
+            TweetList,
+            FollowSuggestions,
+            SideFooter
         },
         name: 'Profile',
         props: ['username'],
@@ -80,12 +86,13 @@
           }
         },
         created() {
+            this.$store.dispatch('loginCurrentUser', {token: localStorage.getItem("music_token"), from: 'profile'})
             this.fetchTweets();
             console.log('Profile Component created.')
         },
         methods: {
             fetchTweets() {
-                this.$store.dispatch('getTweetsByUsername', this.username)
+                this.$store.dispatch('getTweetsByUsername', {username: this.username, token: localStorage.getItem('music_token')})
             }
         },
         watch: {

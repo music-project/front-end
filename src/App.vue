@@ -79,7 +79,6 @@ export default {
   },
   created () {
       // alert('app vue')
-      this.$store.dispatch('loginCurrentUser', {token: localStorage.getItem("music_token")})
   },
   methods: {
     closePopup () {

@@ -78,12 +78,9 @@
 </template>
 
 <script>
-import VuePassword from 'vue-password'
-
 export default {
   name: 'Login',
   components: {
-    VuePassword
   },
   data () {
     return {
@@ -95,7 +92,6 @@ export default {
   },
   methods: {
     login () {
-      // alert(this.user.username + this.user.password)
       this.$store.dispatch('loginUser', {username: this.user.username, password: this.user.password})
     }
   }

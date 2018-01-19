@@ -62,7 +62,8 @@
           }
         },
         created() {
-          this.fetchSuggestions();
+            // this.fetchSuggestions();
+            this.loading = false
         },
         methods: {
             fetchSuggestions() {
@@ -79,6 +80,7 @@
                 this.fetchSuggestions()
             }
         },
+        /*
         watch: {
             'suggestions' (to) {
                 if(to.length === 0) {
@@ -86,5 +88,6 @@
                 }
             }
         }
+        */
     }
 </script>

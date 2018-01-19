@@ -81,7 +81,7 @@
 import VuePassword from 'vue-password'
 
 export default {
-  name: 'Login',
+  name: 'Register',
   components: {
     VuePassword
   },
@@ -95,7 +95,6 @@ export default {
   },
   methods: {
     register () {
-      // alert(this.user.username + this.user.password)
       this.$store.dispatch('registUser', {username: this.user.username, password: this.user.password})
     }
   }

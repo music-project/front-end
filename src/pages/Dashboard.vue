@@ -62,14 +62,13 @@ export default {
     }
   },
   created () {
+    this.$store.dispatch('loginCurrentUser', {token: localStorage.getItem("music_token")})
     this.fetchFeed()
     console.log('Get user feed')
   },
   methods: {
     fetchFeed () {
-      // alert('dashboard vue')
-      this.noMoreTweets = false
-      // alert(this.$store.getters.me.id)
+      // this.noMoreTweets = false
       this.$store.dispatch('getDashboardFeed', this.$store.getters.me)
     },
     /*

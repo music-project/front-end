@@ -3,8 +3,8 @@
         <ul>
             <router-link exact tag="li" :to="{ name: 'profile', params: { username: user.username }}">
                 <a>
-                    <strong>Tweets</strong>
-                    <span class="tag is-rounded m-l-1">{{ user.tweets_count }}</span>
+                    <strong>Musics</strong>
+                    <span class="tag is-rounded m-l-1">{{ user.tweets.length }}</span>
                 </a>
             </router-link>
 

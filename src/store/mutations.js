@@ -25,7 +25,6 @@ export const Update_Tweets_Cnt = (state, cnt) => {
 }
 
 
-
 export const Suggest_User = (state, users) => {
     state.followSuggestions = users
 }

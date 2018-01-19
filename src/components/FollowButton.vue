@@ -35,7 +35,7 @@
             toggleFollow() {
                 this.loading = true;
                 let action = this.user.is_following ? 'unFollowUser' : 'followUser';
-                this.$store.dispatch(action, this.user.id).then((res) => {
+                this.$store.dispatch(action, {uname: this.user.username, cname: this.$store.getters.me.username}).then((res) => {
                     this.loading = false;
                     this.isFollowing = !this.isFollowing;
                     this.$emit(action, this.user);
